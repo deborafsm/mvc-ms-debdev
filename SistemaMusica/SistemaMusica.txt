@@ -1,0 +1,39 @@
+
+Aba 
+- Cadastro De alunos
++Nome Aluno
++Idade
++Endereço
++Telefone
++Celular
++Nome da mae
++Professor
++Instrumento
++Mensalidade
++Horario
++Dia
+
+(Cadastrar Professor)
+Adicionar
+Editar 
+Remover
+
+- Pesquisar alunos
+Pelo Nome 
+Pelo Numero do Aluno
+
+* Listar Alunos
+Numero do Aluno
+Nome 
+* Lista Mensalidade
+(Ao clicar no aluno)
+Numero Aluno
+Nome 
+Mensalidades 
+Eventos - Calendario 
+-Provas
+-Recital
+*Numero Aluno
+*Nome Alunos
+
+
