@@ -5,7 +5,6 @@
  */
 package View;
 
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,27 +30,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         desk = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 0, 0));
         setFocusCycleRoot(false);
-        setUndecorated(true);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon/musica.png")).getImage());
         setResizable(false);
 
         javax.swing.GroupLayout deskLayout = new javax.swing.GroupLayout(desk);
         desk.setLayout(deskLayout);
         deskLayout.setHorizontalGroup(
             deskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
+            .addGap(0, 884, Short.MAX_VALUE)
         );
         deskLayout.setVerticalGroup(
             deskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGap(0, 608, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
@@ -59,24 +58,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jMenuBar1.setMaximumSize(new java.awt.Dimension(403, 30));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(403, 30));
-
-        jMenu2.setBackground(new java.awt.Color(255, 0, 0));
-        jMenu2.setForeground(new java.awt.Color(204, 0, 0));
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/quit.png"))); // NOI18N
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
-            }
-        });
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2);
-
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/close.png"))); // NOI18N
-        jMenuBar1.add(jMenu1);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/professor.png"))); // NOI18N
         jMenu3.setText("Professores");
@@ -113,9 +94,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/quaver.png"))); // NOI18N
-        jMenu5.setText("Métodos");
+        jMenu5.setText("Agenda");
         jMenu5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu5);
+
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pag.png"))); // NOI18N
+        jMenu6.setText("Pagamento");
+        jMenu6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu6MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lista.png"))); // NOI18N
+        jMenu7.setText("Lista");
+        jMenu7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
 
@@ -124,32 +130,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(desk)
-                .addGap(0, 0, 0))
+                .addContainerGap()
+                .addComponent(desk))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desk)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(desk)
+                .addGap(0, 0, 0))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jMenu2ActionPerformed
-
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        // TODO add your handling code here:
-        int sair;
-        sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair ? ", "Atenção", JOptionPane.YES_NO_OPTION);
-        if (sair == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu3MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu3MenuSelected
         // TODO add your handling code here:
@@ -176,6 +169,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
         viewAluno.setVisible(true);
         desk.add(viewAluno);
     }//GEN-LAST:event_jMenu4MouseClicked
+
+    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+        //Chamar a tela de pagamentos
+        Pagamento viewPag = new Pagamento();
+        viewPag.setVisible(true);
+        desk.add(viewPag);
+      
+    }//GEN-LAST:event_jMenu6MouseClicked
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        // Chamar a tela de lista 
+        Lista viewList = new Lista();
+        viewList.setVisible(true);
+        desk.add(viewList);
+    }//GEN-LAST:event_jMenu7MouseClicked
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        // TODO add your handling code here:
+        Agenda viewAgenda = new Agenda();
+        viewAgenda.setVisible(true);
+        desk.add(viewAgenda);
+    }//GEN-LAST:event_jMenu5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -214,11 +229,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desk;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

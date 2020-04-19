@@ -5,7 +5,6 @@
  */
 package View;
 
-import Controller.LoginController;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.logging.Level;
@@ -20,7 +19,6 @@ import javax.swing.JTextField;
  */
 public class Login extends javax.swing.JFrame {
     //Classe que define a localização do Jframe,
-    private final LoginController controller;
     private Point point = new Point();
     
    
@@ -29,7 +27,6 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        controller =  new LoginController(this);
     }
 
     /**
@@ -219,7 +216,6 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.controller.fizTarefa();
         System.out.println();//Exibe usuario
         System.out.println();//Exibe senha
         Point p = this.getLocation();
