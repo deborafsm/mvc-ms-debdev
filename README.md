@@ -9,4 +9,4 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 - IDE: Netbeans 
 - Linguagem de programação: Java 
 #Caso de Uso
-<img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-devdev/imagens/CasoDeUSo.PNG" width="460" />
+<img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-devdev/master/imagens/CasoDeUSo.PNG" width="460" />
