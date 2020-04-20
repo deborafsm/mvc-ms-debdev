@@ -1,9 +1,8 @@
-# mvc-ms-debdev
-# Projeto Sistema Simples de musica 
+# Projeto Sistema de Gerenciamento de Curso de Música
 
 Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvolvido para minha querida professora e amiga Thamires.
 
-** Author: ** Débora Freire  (Deb)
+** Author: ** Débora Freire  (DebDev)
 
 # Tecnologias Utilizadas:
 - IDE: Netbeans 
@@ -41,3 +40,6 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 # Lista Presença
 
 <img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/Lista.PNG" width="460"/>
+
+
+**Porque para Deus nada é impossível.
