@@ -44,4 +44,4 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 
 
 
-                                                                                                  ~~ Porque para Deus nada é impossível.
+Porque para Deus nada é impossível.
