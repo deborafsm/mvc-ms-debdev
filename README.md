@@ -42,4 +42,6 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 <img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/Lista.PNG" width="460"/>
 
 
-**Porque para Deus nada é impossível.
+
+
+                                                                                                  ~~ Porque para Deus nada é impossível.
