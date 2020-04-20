@@ -10,4 +10,4 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 - Linguagem de programação: Java 
 # Caso de Uso:
 
-<img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/CasoDeUSo.PNG" width="460" />
+<img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/CasoDeUSo.PNG" width="460"/>
