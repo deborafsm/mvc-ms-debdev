@@ -38,6 +38,6 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 
 <img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/PAG.PNG" width="460"/>
 
-#Lista
+# Lista Presença
 
 <img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/Lista.PNG" width="460"/>
