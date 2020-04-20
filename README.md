@@ -12,6 +12,6 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 
 <img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/CasoDeUSo.PNG" width="460"/>
 
-#Diagrama de Caso de Uso
+# Diagrama de Caso de Uso
 
 <img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/DiagamaMS.PNG" width="460"/>
