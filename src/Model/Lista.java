@@ -9,7 +9,8 @@ package Model;
  *
  * @author DeboraDev
  */
-public class Professor {
-    private String nomeProf;
+public class Lista extends Aluno{
+    private int id_lista;
+    private String descricao;
     
 }

@@ -9,7 +9,9 @@ package Model;
  *
  * @author DeboraDev
  */
-public class Professor {
-    private String nomeProf;
+public class Agenda extends Aluno{
+    private String dataAgenda;
+    private String diaAgenda;
+    private String descEvento;
     
 }

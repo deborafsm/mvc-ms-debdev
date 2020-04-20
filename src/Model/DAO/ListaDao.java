@@ -8,20 +8,28 @@ package Model.DAO;
 /**
  *
  * @author DeboraDev
+ * @version 2.0
+ * 
  */
-public class AlunoDao {
+public class ListaDao {
     /*
     Lista: 
     <<<<<<aluno>>>>>
-    RM_ALUNO
-    NOME
+    NOME AlUNO
     <<<<<<curso>>>>>
-    DIA DE AULA 
-    CURSO
-    HORA
+    curso
+    <<<<<professor>>>>
+    nomeProfessor
     */
-    //INSERT
-    //DELETE
-    //UPDATE
+    /*INSERT
+      +descricao
+    */
+    /*DELETE
+      -descricao
+    */
+    
+    /*UPDATE
+       *descricao
+    */
     //SELECT -> nomeAlunos
 }
