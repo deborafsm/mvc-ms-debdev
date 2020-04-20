@@ -32,7 +32,7 @@ Software para gerenciar alunos  e pagamento, com funcionalidade basica, desenvol
 
 # Agenda 
 
-<img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/Agenda.PNG" width="460"/>
+<img src="https://raw.githubusercontent.com/deborafsm/mvc-ms-debdev/master/imagens/agendaNv.PNG" width="460"/>
 
 # Pagamento 
 
