@@ -18,54 +18,54 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
     
-    private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String url = "jdbc:mysql://localhost:3306/<nomeBD>";
-    private static final String user = "root";
-    private static final String pass = "";
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3306/bd_musicschool";
+    private static final String USER = "root";
+    private static final String PASS = "";
 
     //Pega conexao
     public static Connection getConnection() {
         try {
-            Class.forName(driver);
-            return DriverManager.getConnection(url, user, pass);
+            Class.forName(DRIVER);
+            return DriverManager.getConnection(URL, USER, PASS);
             
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException("Erro na conexão: ", e);
         }
     }
    //Fecha conexao con
-    public static void closeConnection(Connection con) {
+    public static void closeConection(Connection con) {
         if (con != null) {
             try {
                 con.close();
                 
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Erro : " + e);
             }
         }
     }
 //Fecha conexao con , ps
-    public static void closeConnection(Connection con, PreparedStatement ps) {
+    public static void closeConection(Connection con, PreparedStatement ps) {
         if (ps != null) {
             try {
                 ps.close();
                 
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Erro : " + e);
             }
-            closeConnection(con);
+            closeConection(con);
         }
     }
 //Fecha conexao con , ps, rs
-    public static void closeConnection(Connection con, PreparedStatement ps, ResultSet rs) {
+    public static void closeConection(Connection con, PreparedStatement ps, ResultSet rs) {
         if (rs != null) {
             try {
                 rs.close();
                 
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Erro : " + e);
             }
-            closeConnection(con, ps);
+            closeConection(con, ps);
         }
     }
     

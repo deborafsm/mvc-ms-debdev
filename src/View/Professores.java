@@ -45,6 +45,7 @@ public class Professores extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setTitle("Professor");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar Professores"));
 

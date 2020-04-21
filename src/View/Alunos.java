@@ -5,6 +5,13 @@
  */
 package View;
 
+import Model.Curso;
+import Model.DAO.CursoDao;
+import Model.DAO.DiaCursoDao;
+import Model.DAO.HoracursoDao;
+import Model.Diacurso;
+import Model.Horacurso;
+
 /**
  *
  * @author DeboraDev
@@ -16,6 +23,31 @@ public class Alunos extends javax.swing.JInternalFrame {
      */
     public Alunos() {
         initComponents();
+        readCurso();
+        readDiaCurso();
+        readHoraCurso();
+
+    }
+
+    public void readCurso() {
+        CursoDao dao = new CursoDao();
+
+        for (Curso c : dao.readCurso()) {
+            cboModulo.addItem(c);
+        }
+    }
+
+    public void readDiaCurso() {
+        DiaCursoDao dao = new DiaCursoDao();
+        for (Diacurso dcurso : dao.readDias()) {
+            cboDiaAula.addItem(dcurso);
+        }
+    }
+    public void readHoraCurso() {
+        HoracursoDao dao = new HoracursoDao();
+        for (Horacurso hcurso : dao.readHoras()) {
+            cboHoraCurso.addItem(hcurso);
+        }
     }
 
     /**
@@ -48,7 +80,7 @@ public class Alunos extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         cboDiaAula = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboHoraCurso = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtProf = new javax.swing.JTextField();
         txtTelResp = new javax.swing.JFormattedTextField();
@@ -57,6 +89,7 @@ public class Alunos extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setTitle("Alunos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar Alunos"));
 
@@ -160,16 +193,19 @@ public class Alunos extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setText("Dia de Aula");
+        jLabel2.setText("Dia de Aula:");
 
         cboModulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        cboModulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piano", "Órgão", "Violino", "Canto" }));
+        cboModulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboModuloActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Curso - Modulo");
 
         cboDiaAula.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        cboDiaAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segunda-feira", "Terça-feira ", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sabado", "Domingo" }));
         cboDiaAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboDiaAulaActionPerformed(evt);
@@ -177,10 +213,14 @@ public class Alunos extends javax.swing.JInternalFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setText("Horas");
+        jLabel8.setText("Hora:");
 
-        jComboBox1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "9:00 ás 10:00", "11:00 às 12:00", "15:00 às 16:00", "17:00 às 18:00", "19:00 às 20:00" }));
+        cboHoraCurso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cboHoraCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboHoraCursoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Professor(a)");
@@ -215,17 +255,20 @@ public class Alunos extends javax.swing.JInternalFrame {
                             .addComponent(jLabel14)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3))
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cboModulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(30, 30, 30)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
-                                        .addComponent(cboDiaAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(36, 36, 36)
+                                        .addComponent(cboDiaAula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel8))
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addGap(17, 17, 17)
+                                            .addComponent(jLabel8))
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(cboHoraCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel5)
@@ -270,13 +313,13 @@ public class Alunos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboModulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboDiaAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboHoraCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -373,13 +416,22 @@ public class Alunos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelRespActionPerformed
 
+    private void cboModuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboModuloActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cboModuloActionPerformed
+
+    private void cboHoraCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHoraCursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboHoraCursoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAluno;
     private javax.swing.JButton btnFinderProf;
-    private javax.swing.JComboBox<String> cboDiaAula;
-    private javax.swing.JComboBox<String> cboModulo;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Object> cboDiaAula;
+    private javax.swing.JComboBox<Object> cboHoraCurso;
+    private javax.swing.JComboBox<Object> cboModulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
