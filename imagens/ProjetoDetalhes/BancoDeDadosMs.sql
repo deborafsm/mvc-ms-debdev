@@ -82,7 +82,8 @@ select * from curso;
 describe lista;
 describe pagamento;
 
-alter table curso drop column diaCurso ;
+alter table curso drop column id_professor ;
+describe curso;
 alter table curso drop column horaCurso;
 
 
@@ -98,4 +99,32 @@ horaCurso varchar(30)
 
 describe professor;
 
+select * from diacurso;
+select * from horacurso;
 
+alter table curso drop column rm_aluno;
+
+alter table aluno add CursoEscolhido int;
+describe aluno;
+alter table aluno 
+add foreign key (CursoEscolhido)
+references	curso(id_curso);
+select * from aluno;
+select * from curso;
+update aluno set CursoEscolhido = '1' where rm_aluno = '1';
+
+
+select a.nomeAluno, c.nomeCurso
+from aluno as a join curso as c
+on c.id_curso = a.CursoEscolhido
+order by a.nomeAluno; 
+
+select a.nomeAluno, c.nomeCurso
+from aluno as a  left outer join curso as c
+on c.id_curso = a.CursoEscolhido
+order by a.nomeAluno; 
+
+
+alter table aluno 
+add foreign key (diaAula)
+references	diaCurso(diaCurso);

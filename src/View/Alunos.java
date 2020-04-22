@@ -6,11 +6,14 @@
 package View;
 
 import Model.Curso;
+import Model.DAO.AlunoDao;
 import Model.DAO.CursoDao;
 import Model.DAO.DiaCursoDao;
 import Model.DAO.HoracursoDao;
 import Model.Diacurso;
 import Model.Horacurso;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -23,9 +26,13 @@ public class Alunos extends javax.swing.JInternalFrame {
      */
     public Alunos() {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) tbAlunos.getModel();
+        tbAlunos.setRowSorter(new TableRowSorter(model));
+
         readCurso();
         readDiaCurso();
         readHoraCurso();
+        readJtable();
 
     }
 
@@ -43,11 +50,30 @@ public class Alunos extends javax.swing.JInternalFrame {
             cboDiaAula.addItem(dcurso);
         }
     }
+
     public void readHoraCurso() {
         HoracursoDao dao = new HoracursoDao();
         for (Horacurso hcurso : dao.readHoras()) {
             cboHoraCurso.addItem(hcurso);
         }
+    }
+
+    public void readJtable() {
+        DefaultTableModel model = (DefaultTableModel) tbAlunos.getModel();
+        model.setNumRows(0);
+        AlunoDao os = new AlunoDao();
+
+        os.findAll().forEach((osAluno) -> {
+            // for é usado para passar pelos objetos
+            model.addRow(new Object[]{
+                osAluno.getNomeAluno(),
+                osAluno.getDcurso(),
+                osAluno.getDcurso(),
+                osAluno.getCurso()
+
+            });
+        });
+
     }
 
     /**
@@ -112,17 +138,17 @@ public class Alunos extends javax.swing.JInternalFrame {
 
         tbAlunos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "RM Aluno", "Nome Aluno(a)", "Dia de aula", "Curso", "Hora"
+                "Nome Aluno(a)", "Dia de aula", "Curso", "Hora"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

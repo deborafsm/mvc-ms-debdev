@@ -16,6 +16,32 @@ public class Aluno extends Curso {
     private String celularAluno;
     private String nomeResponsalvel;
     private String celularResponsavel;
+    private Diacurso dcurso;
+    private Horacurso hcurso;
+    private Curso curso;
+
+    public Aluno() {
+    }
+
+    public Aluno(int rm_aluno, String nomeAluno, String celularAluno, String nomeResponsalvel, String celularResponsavel, Diacurso dcurso, Horacurso hcurso, Curso curso) {
+        this.rm_aluno = rm_aluno;
+        this.nomeAluno = nomeAluno;
+        this.celularAluno = celularAluno;
+        this.nomeResponsalvel = nomeResponsalvel;
+        this.celularResponsavel = celularResponsavel;
+        this.dcurso = dcurso;
+        this.hcurso = hcurso;
+        this.curso = curso;
+    }
+
+    public Aluno(String nomeCurso, Diacurso dcurso, Horacurso hcurso) {
+        super(nomeCurso, dcurso, hcurso);
+    }
+
+    public Aluno(String nomeAluno, String nomeCurso, Diacurso dcurso, Horacurso hcurso) {
+        super(nomeCurso, dcurso, hcurso);
+        this.nomeAluno = nomeAluno;
+    }
 
     public int getRm_aluno() {
         return rm_aluno;
@@ -57,4 +83,28 @@ public class Aluno extends Curso {
         this.celularResponsavel = celularResponsavel;
     }
 
+    public Diacurso getDcurso() {
+        return dcurso;
+    }
+
+    public void setDcurso(Diacurso dcurso) {
+        this.dcurso = dcurso;
+    }
+
+    public Horacurso getHcurso() {
+        return hcurso;
+    }
+
+    public void setHcurso(Horacurso hcurso) {
+        this.hcurso = hcurso;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+    
 }

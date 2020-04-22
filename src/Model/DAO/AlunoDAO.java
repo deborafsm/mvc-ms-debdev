@@ -10,7 +10,10 @@ import Model.Aluno;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,10 +21,13 @@ import javax.swing.JOptionPane;
  * @author DeboraDev
  */
 public class AlunoDao {
+
     private Connection con = null;
+
     public AlunoDao() {
         con = ConnectionFactory.getConnection();
     }
+
     /*
     Lista: 
     <<<<<<aluno>>>>>
@@ -31,11 +37,11 @@ public class AlunoDao {
     DIA DE AULA 
     CURSO
     HORA
-    */
+     */
     //INSERT 
-    public void insertStudent(Aluno aluno){
+    public void insertStudent(Aluno aluno) {
         String sql = "insert into aluno(nomeAluno,celularAluno,nomeResponsavel,celularResponsavel)values(?,?,?,?)";
-        PreparedStatement ps =null;
+        PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, aluno.getNomeAluno());
@@ -43,16 +49,49 @@ public class AlunoDao {
             ps.setString(3, aluno.getNomeResponsalvel());
             ps.setString(4, aluno.getCelularResponsavel());
             ps.executeQuery();
-            JOptionPane.showMessageDialog(null,"Aluno inserido com sucesso");
+            JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
         } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null,"Erro ao inserir Aluno "+ e);
-        }finally{
+            JOptionPane.showMessageDialog(null, "Erro ao inserir Aluno " + e);
+        } finally {
             ConnectionFactory.closeConection(con, ps);
         }
     }
+
     //DELETE
     //UPDATE
     //SELECT -> nomeAlunos
+    /*Listar --- 3 listas */
+    public List<Aluno> findAll() {
+        String sql = "select a.nomeAluno, c.nomeCurso, d.diaCurso, h.horaCurso\n"
+                + "from aluno as a\n"
+                + "	inner join curso as c \n"
+                + "on c.id_curso = a.CursoEscolhido\n"
+                + "    inner join diaCurso as d \n"
+                + "on d.id = a.diaAula\n"
+                + "    inner join horaCurso as h\n"
+                + "on h.id_hora = a.horaAula";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Aluno> alunoList = new ArrayList<>();
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Aluno alunos = new Aluno();
 
-    
+                /*Setar - Nome / curso / dia / hora*/
+                alunos.setNomeAluno(rs.getString("nomeAluno"));
+                alunos.setCurso(rs.getString("nomeCurso"));
+                alunos.setDcurso(rs.getString("horaCurso"));
+                alunos.setHcurso(rs.getString("horaCurso"));
+                alunoList.add(alunos);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro " + e);//mOSTRA o erro
+        } finally {
+            ConnectionFactory.closeConection(con, ps, rs);
+        }
+        return alunoList;
+    }
+
 }

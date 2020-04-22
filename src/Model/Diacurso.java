@@ -9,7 +9,7 @@ package Model;
  *
  * @author DeboraDev
  */
-public class Diacurso {
+public class Diacurso extends Horacurso{
     private String diaCurso;
 
     public Diacurso() {

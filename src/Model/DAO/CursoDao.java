@@ -25,6 +25,21 @@ public class CursoDao {
         con = ConnectionFactory.getConnection();
     }
 
+    
+    /*
+    
+              -- Selecionando 3 tabelas 
+            select a.nomeAluno, c.nomeCurso, d.diaCurso, h.horaCurso
+            from aluno as a
+                    inner join curso as c 
+            on c.id_curso = a.CursoEscolhido
+                inner join diaCurso as d 
+            on d.id = a.diaAula
+                inner join horaCurso as h
+            on h.id_hora = a.horaAula;
+
+    
+    */
     public java.util.List<Curso> readCurso() {
         PreparedStatement ps = null;
         ResultSet rs = null;
