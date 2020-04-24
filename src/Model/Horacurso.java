@@ -5,11 +5,12 @@
  */
 package Model;
 
+
 /**
  *
  * @author DeboraDev
  */
-public class Horacurso {
+public class Horacurso{
    
     private String horaCurso;
 

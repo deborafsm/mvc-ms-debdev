@@ -40,7 +40,7 @@ public class AlunoDao {
      */
     //INSERT 
     public void insertStudent(Aluno aluno) {
-        String sql = "insert into aluno(nomeAluno,celularAluno,nomeResponsavel,celularResponsavel)values(?,?,?,?)";
+        String sql = "insert into aluno(nomeAluno,celularAluno,nomeResponsavel,celularResponsavel,CursoEscolhido,horaAula,diaAula)values(?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -48,7 +48,10 @@ public class AlunoDao {
             ps.setString(2, aluno.getCelularAluno());
             ps.setString(3, aluno.getNomeResponsalvel());
             ps.setString(4, aluno.getCelularResponsavel());
-            ps.executeQuery();
+            ps.setString(5, aluno.getNomeCurso());
+            ps.setString(6, aluno.gethCurso());
+            ps.setString(7, aluno.getdCurso());
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao inserir Aluno " + e);
@@ -81,12 +84,12 @@ public class AlunoDao {
 
                 /*Setar - Nome / curso / dia / hora*/
                 alunos.setNomeAluno(rs.getString("nomeAluno"));
-                alunos.setCurso(rs.getString("nomeCurso"));
-                alunos.setDcurso(rs.getString("horaCurso"));
-                alunos.setHcurso(rs.getString("horaCurso"));
+                alunos.setNomeCurso(rs.getString("nomeCurso"));
+                alunos.setdCurso(rs.getString("diaCurso"));
+                alunos.sethCurso(rs.getString("horaCurso"));
                 alunoList.add(alunos);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro " + e);//mOSTRA o erro
         } finally {
             ConnectionFactory.closeConection(con, ps, rs);

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Aluno;
 import Model.Curso;
 import Model.DAO.AlunoDao;
 import Model.DAO.CursoDao;
@@ -67,9 +68,9 @@ public class Alunos extends javax.swing.JInternalFrame {
             // for é usado para passar pelos objetos
             model.addRow(new Object[]{
                 osAluno.getNomeAluno(),
-                osAluno.getDcurso(),
-                osAluno.getDcurso(),
-                osAluno.getCurso()
+                osAluno.getNomeAluno(),
+                osAluno.gethCurso(),
+                osAluno.getdCurso()
 
             });
         });
@@ -171,6 +172,11 @@ public class Alunos extends javax.swing.JInternalFrame {
 
         btnAddAluno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/mais.png"))); // NOI18N
         btnAddAluno.setText(" addicionar");
+        btnAddAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddAlunoMouseClicked(evt);
+            }
+        });
         btnAddAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddAlunoActionPerformed(evt);
@@ -450,6 +456,21 @@ public class Alunos extends javax.swing.JInternalFrame {
     private void cboHoraCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHoraCursoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboHoraCursoActionPerformed
+
+    private void btnAddAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddAlunoMouseClicked
+        // Ao clicar no botão
+        Aluno aluno = new Aluno();
+        AlunoDao dao = new AlunoDao();
+        aluno.setNomeAluno(txtNomeAluno.getText());
+        aluno.setCelularAluno(txtTelefone01Aluno.getText());
+        aluno.setNomeResponsalvel(txtNomeResp.getText());
+        aluno.setCelularResponsavel(txtTelResp.getText());
+        aluno.setNomeCurso(cboModulo.getSelectedItem().toString());
+        aluno.setdCurso(cboDiaAula.getSelectedItem().toString());
+        aluno.sethCurso(cboHoraCurso.getSelectedItem().toString());
+        dao.insertStudent(aluno);
+        readJtable();
+    }//GEN-LAST:event_btnAddAlunoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

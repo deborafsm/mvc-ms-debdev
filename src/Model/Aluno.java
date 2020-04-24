@@ -5,6 +5,7 @@
  */
 package Model;
 
+
 /**
  *
  * @author debora
@@ -23,23 +24,8 @@ public class Aluno extends Curso {
     public Aluno() {
     }
 
-    public Aluno(int rm_aluno, String nomeAluno, String celularAluno, String nomeResponsalvel, String celularResponsavel, Diacurso dcurso, Horacurso hcurso, Curso curso) {
-        this.rm_aluno = rm_aluno;
-        this.nomeAluno = nomeAluno;
-        this.celularAluno = celularAluno;
-        this.nomeResponsalvel = nomeResponsalvel;
-        this.celularResponsavel = celularResponsavel;
-        this.dcurso = dcurso;
-        this.hcurso = hcurso;
-        this.curso = curso;
-    }
-
-    public Aluno(String nomeCurso, Diacurso dcurso, Horacurso hcurso) {
-        super(nomeCurso, dcurso, hcurso);
-    }
-
-    public Aluno(String nomeAluno, String nomeCurso, Diacurso dcurso, Horacurso hcurso) {
-        super(nomeCurso, dcurso, hcurso);
+    public Aluno(String nomeAluno, String nomeCurso, String dCurso, String hCurso) {
+        super(nomeCurso, dCurso, hCurso);
         this.nomeAluno = nomeAluno;
     }
 
@@ -106,5 +92,5 @@ public class Aluno extends Curso {
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
-    
+
 }

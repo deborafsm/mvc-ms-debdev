@@ -5,11 +5,13 @@
  */
 package Model;
 
+
 /**
  *
  * @author DeboraDev
  */
-public class Diacurso extends Horacurso{
+public class Diacurso {
+
     private String diaCurso;
 
     public Diacurso() {
@@ -27,5 +29,5 @@ public class Diacurso extends Horacurso{
     public String toString() {
         return getDiaCurso();
     }
-    
+
 }

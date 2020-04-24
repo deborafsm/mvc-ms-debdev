@@ -9,16 +9,16 @@ package Model;
  *
  * @author DeboraDev
  */
-public class Curso extends Diacurso {
+public class Curso {
 
     private int id_curso;
     private String nomeCurso;
-    private Diacurso dcurso;
-    private Horacurso hcurso;
+    private String dCurso;
+    private String hCurso;
 
     public Curso() {
     }
-    
+
     public Curso(String nomeCurso) {
         this.nomeCurso = nomeCurso;
     }
@@ -28,13 +28,12 @@ public class Curso extends Diacurso {
         this.nomeCurso = nomeCurso;
     }
 
-    public Curso(String nomeCurso, Diacurso dcurso, Horacurso hcurso) {
+    public Curso(String nomeCurso, String dCurso, String hCurso) {
         this.nomeCurso = nomeCurso;
-        this.dcurso = dcurso;
-        this.hcurso = hcurso;
+        this.dCurso = dCurso;
+        this.hCurso = hCurso;
     }
 
-    
     public int getId_curso() {
         return id_curso;
     }
@@ -51,25 +50,37 @@ public class Curso extends Diacurso {
         this.nomeCurso = nomeCurso;
     }
 
-    public Diacurso getDcurso() {
-        return dcurso;
+    public String getdCurso() {
+        return dCurso;
     }
 
-    public void setDcurso(Diacurso dcurso) {
-        this.dcurso = dcurso;
+    public void setdCurso(String dCurso) {
+        this.dCurso = dCurso;
     }
 
-    public Horacurso getHcurso() {
-        return hcurso;
+    public String gethCurso() {
+        return hCurso;
     }
 
-    public void setHcurso(Horacurso hcurso) {
-        this.hcurso = hcurso;
+    public void sethCurso(String hCurso) {
+        this.hCurso = hCurso;
     }
 
     @Override
     public String toString() {
         return getNomeCurso();
+
+    }
+
+    public String toString1() {
+
+        return getdCurso();
+
+    }
+
+    public String toString2() {
+
+        return gethCurso();
 
     }
 
