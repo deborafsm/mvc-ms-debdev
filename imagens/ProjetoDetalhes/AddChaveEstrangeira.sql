@@ -7,7 +7,9 @@ add foreign key (horaAula)
 references	horacurso (id_hora);
 
 
-describe diaCurso;
+describe aluno;
+
+select * from aluno;
 
 -- Selecionando 3 tabelas 
 select a.nomeAluno, c.nomeCurso, d.diaCurso, h.horaCurso
@@ -20,3 +22,4 @@ on d.id = a.diaAula
 on h.id_hora = a.horaAula;
 
 
+select * from diaCurso;

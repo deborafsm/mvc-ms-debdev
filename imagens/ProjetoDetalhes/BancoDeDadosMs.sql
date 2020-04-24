@@ -128,3 +128,5 @@ order by a.nomeAluno;
 alter table aluno 
 add foreign key (diaAula)
 references	diaCurso(diaCurso);
+
+

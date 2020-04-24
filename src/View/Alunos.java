@@ -6,15 +6,8 @@
 package View;
 
 import Model.Aluno;
-import Model.Curso;
 import Model.DAO.AlunoDao;
-import Model.DAO.CursoDao;
-import Model.DAO.DiaCursoDao;
-import Model.DAO.HoracursoDao;
-import Model.Diacurso;
-import Model.Horacurso;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -27,17 +20,19 @@ public class Alunos extends javax.swing.JInternalFrame {
      */
     public Alunos() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) tbAlunos.getModel();
+        Aluno aluno = new Aluno();
+        AlunoDao dao = new AlunoDao();
+        /*DefaultTableModel model = (DefaultTableModel) tbAlunos.getModel();
         tbAlunos.setRowSorter(new TableRowSorter(model));
 
         readCurso();
         readDiaCurso();
-        readHoraCurso();
+        readHoraCurso();*/
         readJtable();
 
     }
 
-    public void readCurso() {
+    /* public void readCurso() {
         CursoDao dao = new CursoDao();
 
         for (Curso c : dao.readCurso()) {
@@ -58,7 +53,7 @@ public class Alunos extends javax.swing.JInternalFrame {
             cboHoraCurso.addItem(hcurso);
         }
     }
-
+     */
     public void readJtable() {
         DefaultTableModel model = (DefaultTableModel) tbAlunos.getModel();
         model.setNumRows(0);
@@ -68,13 +63,40 @@ public class Alunos extends javax.swing.JInternalFrame {
             // for é usado para passar pelos objetos
             model.addRow(new Object[]{
                 osAluno.getNomeAluno(),
-                osAluno.getNomeAluno(),
+                osAluno.getNomeCurso(),
                 osAluno.gethCurso(),
                 osAluno.getdCurso()
 
             });
         });
 
+    }
+
+    public void FindStudList(String nome) {
+        DefaultTableModel model = (DefaultTableModel) tbAlunos.getModel();
+        model.setNumRows(0);
+        AlunoDao dao = new AlunoDao();
+
+        dao.findStud(nome).forEach((al) -> {
+            model.addRow(new Object[]{
+                //Chama os itens 
+                al.getNomeAluno(),
+                al.getNomeCurso(),
+                al.gethCurso(),
+                al.getdCurso()
+
+            });
+        });
+
+    }
+
+    //Limpar campos
+    private void clearFields() {
+        txtNomeAluno.setText("");
+        txtNomeResp.setText("");
+        txtTelResp.setText("");
+        txtTelefone01Aluno.setText("");
+        txtProf.setText("");
     }
 
     /**
@@ -87,7 +109,7 @@ public class Alunos extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtFinderProf = new javax.swing.JTextField();
+        txtStudFinder = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnFinderProf = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -120,10 +142,10 @@ public class Alunos extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar Alunos"));
 
-        txtFinderProf.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        txtFinderProf.addActionListener(new java.awt.event.ActionListener() {
+        txtStudFinder.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        txtStudFinder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFinderProfActionPerformed(evt);
+                txtStudFinderActionPerformed(evt);
             }
         });
 
@@ -145,7 +167,7 @@ public class Alunos extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome Aluno(a)", "Dia de aula", "Curso", "Hora"
+                "Nome Aluno(a)", "Nome Curso", "Hora Curso", "Dia Curso"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -154,6 +176,16 @@ public class Alunos extends javax.swing.JInternalFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbAlunosMouseClicked(evt);
+            }
+        });
+        tbAlunos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbAlunosKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(tbAlunos);
@@ -228,6 +260,7 @@ public class Alunos extends javax.swing.JInternalFrame {
         jLabel2.setText("Dia de Aula:");
 
         cboModulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cboModulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piano", "Violino", "Ógão", "Canto" }));
         cboModulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboModuloActionPerformed(evt);
@@ -238,6 +271,7 @@ public class Alunos extends javax.swing.JInternalFrame {
         jLabel3.setText("Curso - Modulo");
 
         cboDiaAula.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cboDiaAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo" }));
         cboDiaAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboDiaAulaActionPerformed(evt);
@@ -248,6 +282,7 @@ public class Alunos extends javax.swing.JInternalFrame {
         jLabel8.setText("Hora:");
 
         cboHoraCurso.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        cboHoraCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", " " }));
         cboHoraCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboHoraCursoActionPerformed(evt);
@@ -279,13 +314,29 @@ public class Alunos extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefone01Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtTelefone01Aluno, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel15)
+                                .addComponent(jLabel16)
+                                .addComponent(txtTelResp, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNomeResp, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(btnAddAluno)
+                                    .addGap(44, 44, 44)
+                                    .addComponent(txtRemoveAluno)
+                                    .addGap(44, 44, 44)
+                                    .addComponent(txtEditAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -300,27 +351,11 @@ public class Alunos extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel8))
                                         .addGroup(jPanel3Layout.createSequentialGroup()
                                             .addGap(18, 18, 18)
-                                            .addComponent(cboHoraCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(txtProf, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel12))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel15)
-                                        .addComponent(jLabel16)
-                                        .addComponent(txtTelResp, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNomeResp, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtEditAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddAluno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRemoveAluno)))
+                                            .addComponent(cboHoraCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(txtProf, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -370,7 +405,7 @@ public class Alunos extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFinderProf, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtStudFinder, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFinderProf)
                         .addGap(0, 252, Short.MAX_VALUE))
@@ -382,7 +417,7 @@ public class Alunos extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFinderProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStudFinder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(btnFinderProf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -408,12 +443,14 @@ public class Alunos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFinderProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFinderProfActionPerformed
+    private void txtStudFinderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudFinderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFinderProfActionPerformed
+    }//GEN-LAST:event_txtStudFinderActionPerformed
 
     private void btnFinderProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinderProfActionPerformed
         // TODO add your handling code here:
+        //Pesquisar Alunos
+        FindStudList(txtStudFinder.getText());
     }//GEN-LAST:event_btnFinderProfActionPerformed
 
     private void txtNomeAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeAlunoActionPerformed
@@ -425,7 +462,24 @@ public class Alunos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAddAlunoActionPerformed
 
     private void txtEditAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditAlunoActionPerformed
-        // TODO add your handling code here:
+        // Editar Aluno
+        if (tbAlunos.getSelectedRow() != -1) {         //SE a tabela estiver selecionada
+            Aluno aluno = new Aluno();
+            AlunoDao dao = new AlunoDao();
+            //Pega o id
+            aluno.setRm_aluno((int) tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 0));
+            //Atualização dos dados 
+            aluno.setNomeAluno(txtNomeAluno.getText());
+            aluno.setNomeResponsalvel(txtNomeResp.getText());
+            aluno.setCelularAluno(txtTelefone01Aluno.getText());
+            aluno.setCelularResponsavel(txtTelResp.getText());
+            aluno.setNomeCurso(cboModulo.getSelectedItem().toString());
+            aluno.setdCurso(cboDiaAula.getSelectedItem().toString());
+            aluno.sethCurso(cboHoraCurso.getSelectedItem().toString());
+            dao.updateStud(aluno);
+            readJtable();
+            clearFields();
+        }
     }//GEN-LAST:event_txtEditAlunoActionPerformed
 
     private void txtTelefone01AlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefone01AlunoActionPerformed
@@ -458,27 +512,38 @@ public class Alunos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cboHoraCursoActionPerformed
 
     private void btnAddAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddAlunoMouseClicked
-        // Ao clicar no botão
-        Aluno aluno = new Aluno();
-        AlunoDao dao = new AlunoDao();
-        aluno.setNomeAluno(txtNomeAluno.getText());
-        aluno.setCelularAluno(txtTelefone01Aluno.getText());
-        aluno.setNomeResponsalvel(txtNomeResp.getText());
-        aluno.setCelularResponsavel(txtTelResp.getText());
-        aluno.setNomeCurso(cboModulo.getSelectedItem().toString());
-        aluno.setdCurso(cboDiaAula.getSelectedItem().toString());
-        aluno.sethCurso(cboHoraCurso.getSelectedItem().toString());
-        dao.insertStudent(aluno);
+        // Adicionar aluno
+        
         readJtable();
+        clearFields();
+
     }//GEN-LAST:event_btnAddAlunoMouseClicked
+
+    private void tbAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAlunosMouseClicked
+        /*if (tbAlunos.getSelectedRow() != -1) {
+            //Preenche os campos ao clicar dentro de um dado na tabela
+            txtNomeAluno.setText(tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 1).toString());
+            txtNomeResp.setText(tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 2).toString());
+            txtTelefone01Aluno.setText(tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 3).toString());
+            txtTelResp.setText(tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 4).toString());
+            txtProf.setText(tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 5).toString());
+            cboModulo.setSelectedItem((tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 6).toString()));
+            cboDiaAula.setSelectedItem((tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 7).toString()));
+            cboHoraCurso.setSelectedItem((tbAlunos.getValueAt(tbAlunos.getSelectedRow(), 8).toString()));
+        }*/
+    }//GEN-LAST:event_tbAlunosMouseClicked
+
+    private void tbAlunosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbAlunosKeyReleased
+        
+    }//GEN-LAST:event_tbAlunosKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAluno;
     private javax.swing.JButton btnFinderProf;
-    private javax.swing.JComboBox<Object> cboDiaAula;
-    private javax.swing.JComboBox<Object> cboHoraCurso;
-    private javax.swing.JComboBox<Object> cboModulo;
+    private javax.swing.JComboBox<String> cboDiaAula;
+    private javax.swing.JComboBox<String> cboHoraCurso;
+    private javax.swing.JComboBox<String> cboModulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -493,12 +558,14 @@ public class Alunos extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbAlunos;
     private javax.swing.JButton txtEditAluno;
-    private javax.swing.JTextField txtFinderProf;
     private javax.swing.JTextField txtNomeAluno;
     private javax.swing.JTextField txtNomeResp;
     private javax.swing.JTextField txtProf;
     private javax.swing.JButton txtRemoveAluno;
+    private javax.swing.JTextField txtStudFinder;
     private javax.swing.JFormattedTextField txtTelResp;
     private javax.swing.JFormattedTextField txtTelefone01Aluno;
     // End of variables declaration//GEN-END:variables
 }
+
+
