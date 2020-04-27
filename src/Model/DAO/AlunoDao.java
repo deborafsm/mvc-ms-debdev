@@ -41,7 +41,7 @@ public class AlunoDao {
     //INSERT alunos no banco de dados
     public void insertStudent(Aluno aluno) {
         String sql = "insert into aluno(nomeAluno,celularAluno,nomeResponsavel,"
-                + "celularResponsavel,CursoEscolhido,horaAula,diaAula)values(?,?,?,?,?,?,?)";
+                + "celularResponsavel,CursoEscolhido,diaAula,horaAula,professor)values(?,?,?,?,?,?,?,?)";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -50,8 +50,9 @@ public class AlunoDao {
             ps.setString(3, aluno.getNomeResponsalvel());
             ps.setString(4, aluno.getCelularResponsavel());
             ps.setString(5, aluno.getNomeCurso());
-            ps.setString(6, aluno.gethCurso());
-            ps.setString(7, aluno.getdCurso());
+            ps.setString(6, aluno.getdCurso());
+            ps.setString(7, aluno.gethCurso());
+            ps.setString(8, aluno.getProfessor());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Aluno inserido com sucesso");
         } catch (HeadlessException | SQLException e) {

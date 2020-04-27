@@ -58,7 +58,7 @@
                           <Component id="txtStudFinder" min="-2" pref="416" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnFinderProf" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="252" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="290" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
@@ -180,71 +180,77 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtTelefone01Aluno" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtNomeAluno" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
-                                      <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnAddAluno" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="txtRemoveAluno" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="txtEditAluno" min="-2" pref="129" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTelResp" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
-                                      <Component id="txtNomeResp" min="-2" pref="362" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel3" max="32767" attributes="0"/>
+                                          <Component id="cboModulo" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cboDiaAula" min="-2" pref="180" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="cboHoraCurso" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnAddAluno" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Component id="txtRemoveAluno" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Component id="txtEditAluno" min="-2" pref="129" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel3" max="32767" attributes="0"/>
-                                              <Component id="cboModulo" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cboDiaAula" min="-2" pref="180" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="cboHoraCurso" min="-2" pref="155" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtProf" min="-2" pref="166" max="-2" attributes="0"/>
-                                  </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtProf" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtNomeAluno" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTelResp" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Component id="txtNomeResp" min="-2" pref="362" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtNomeResp" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="txtNomeAluno" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -267,19 +273,21 @@
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cboModulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboDiaAula" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboHoraCurso" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtProf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtProf" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cboModulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboDiaAula" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboHoraCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAddAluno" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtRemoveAluno" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtEditAluno" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -390,11 +398,12 @@
                   <Font name="Dialog" size="18" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Piano"/>
-                    <StringItem index="1" value="Violino"/>
-                    <StringItem index="2" value="&#xd3;g&#xe3;o"/>
-                    <StringItem index="3" value="Canto"/>
+                  <StringArray count="5">
+                    <StringItem index="0" value="Selecione um curso"/>
+                    <StringItem index="1" value="Piano"/>
+                    <StringItem index="2" value="Violino"/>
+                    <StringItem index="3" value="&#xd3;g&#xe3;o"/>
+                    <StringItem index="4" value="Canto"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -419,14 +428,15 @@
                   <Font name="Dialog" size="18" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="7">
-                    <StringItem index="0" value="Segunda-feira"/>
-                    <StringItem index="1" value="Ter&#xe7;a-feira"/>
-                    <StringItem index="2" value="Quarta-feira"/>
-                    <StringItem index="3" value="Quinta-feira"/>
-                    <StringItem index="4" value="Sexta-feira"/>
-                    <StringItem index="5" value="S&#xe1;bado"/>
-                    <StringItem index="6" value="Domingo"/>
+                  <StringArray count="8">
+                    <StringItem index="0" value="Selecione o dia"/>
+                    <StringItem index="1" value="Segunda-feira"/>
+                    <StringItem index="2" value="Ter&#xe7;a-feira"/>
+                    <StringItem index="3" value="Quarta-feira"/>
+                    <StringItem index="4" value="Quinta-feira"/>
+                    <StringItem index="5" value="Sexta-feira"/>
+                    <StringItem index="6" value="S&#xe1;bado"/>
+                    <StringItem index="7" value="Domingo"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -451,22 +461,23 @@
                   <Font name="Dialog" size="18" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="15">
-                    <StringItem index="0" value="8:00"/>
-                    <StringItem index="1" value="9:00"/>
-                    <StringItem index="2" value="10:00"/>
-                    <StringItem index="3" value="11:00"/>
-                    <StringItem index="4" value="12:00"/>
-                    <StringItem index="5" value="13:00"/>
-                    <StringItem index="6" value="14:00"/>
-                    <StringItem index="7" value="15:00"/>
-                    <StringItem index="8" value="16:00"/>
-                    <StringItem index="9" value="17:00"/>
-                    <StringItem index="10" value="18:00"/>
-                    <StringItem index="11" value="19:00"/>
-                    <StringItem index="12" value="20:00"/>
-                    <StringItem index="13" value="21:00"/>
-                    <StringItem index="14" value=" "/>
+                  <StringArray count="16">
+                    <StringItem index="0" value="Selecione a hora"/>
+                    <StringItem index="1" value="8:00"/>
+                    <StringItem index="2" value="9:00"/>
+                    <StringItem index="3" value="10:00"/>
+                    <StringItem index="4" value="11:00"/>
+                    <StringItem index="5" value="12:00"/>
+                    <StringItem index="6" value="13:00"/>
+                    <StringItem index="7" value="14:00"/>
+                    <StringItem index="8" value="15:00"/>
+                    <StringItem index="9" value="16:00"/>
+                    <StringItem index="10" value="17:00"/>
+                    <StringItem index="11" value="18:00"/>
+                    <StringItem index="12" value="19:00"/>
+                    <StringItem index="13" value="20:00"/>
+                    <StringItem index="14" value="21:00"/>
+                    <StringItem index="15" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -511,6 +522,14 @@
                   <Font name="Dialog" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Celular do Responsavel"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="* Todos os campos s&#xe3;o obrigat&#xf3;rios"/>
               </Properties>
             </Component>
           </SubComponents>
